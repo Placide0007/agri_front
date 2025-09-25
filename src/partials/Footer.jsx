@@ -20,17 +20,17 @@ export default function Footer() {
                         <li className="my-3" >Molestias.</li>
                         <li className="my-3" >Dolorem.</li>
                     </ul>
-                    <ul className="md:text-right text-right" >
+                    <ul className="md:text-right text-right">
                         <li className="my-3" >Lorem.</li>
                         <li className="my-3" >Molestias.</li>
                         <li className="my-3" >Dolorem.</li>
                     </ul>
                 </div>
-                <div className="flex  justify-center items-center" >
+                <div className="flex  justify-center items-center">
                     <p> &copy; Lorem ipsum dolor sit amet.</p>
                 </div>
-                <a className="absolute right-1/2 -top-6 rounded-t-xl cursor-pointer bg-green-600 p-3" href="#top">
-                    <img src={arrow_up} className="" alt="arrow_up" />
+                <a className="absolute right-2 -top-2 rounded-t h-[35px] w-[50px] flex justify-center items-center cursor-pointer bg-green-600 p-3" href="#top">
+                    <i class="fas fa-arrow-up arrow-up"></i>
                 </a>
             </footer>
         </>

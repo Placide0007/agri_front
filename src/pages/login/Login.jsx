@@ -25,7 +25,6 @@ export default function Login() {
                     <p>Dont'have an account?</p>
                     <Link className="underline font-bold text-slate-800" to="/register" >Create one</Link>
                 </div>
-
             </form>
         </>
     )
