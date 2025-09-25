@@ -2,12 +2,17 @@
 @import "tailwindcss";
 
 @layer base {
-  button , input , a{
+  button  , a{
     @apply rounded-xs outline-none
   }
 
+  input{
+    @apply outline-green-600 rounded-xs
+  }
+
   *{
-    font-family:poppins;
+    
+    scroll-behavior: smooth;
     font-size: 15px;
   }
   body{

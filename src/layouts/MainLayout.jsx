@@ -7,7 +7,7 @@ export default function MainLayout() {
         <>
             <main className="flex min-h-screen flex-col" >
                 <Header />
-                <section className="grow">
+                <section id="top" className="grow">
                     <Outlet />
                 </section>
                 <Footer />

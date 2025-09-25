@@ -5,7 +5,7 @@ export default function BareLayout() {
     return (
         <>
             <main className="flex min-h-screen flex-col">
-                <section className="flex justify-center bg-gray-100 items-center min-h-screen">
+                <section id="top" className="flex justify-center bg-gray-100 items-center min-h-screen">
                     <Outlet />
                 </section>
                 <Footer/>

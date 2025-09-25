@@ -1,11 +1,17 @@
 import { Outlet } from "react-router-dom";
+import Header from "../partials/Header";
+import Footer from "../partials/Footer";
 
-export default function AdminLayout(){
+export default function MainLayout() {
     return (
         <>
-            <section className="container mx-auto">
-                <Outlet/>
-            </section>
+            <main className="flex min-h-screen flex-col" >
+                <Header />
+                <section id="top" className="grow">
+                    <Outlet />
+                </section>
+                <Footer />
+            </main>
         </>
     )
 }
