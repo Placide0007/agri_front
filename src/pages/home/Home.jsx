@@ -8,7 +8,7 @@ export default function Home() {
                 <div className=" gap-5 max-w-[850px]  flex justify-center items-center flex-col" >
                     <p className="text-white font-bold text-center  text-7xl " >Lorem ipsum dolor sit amet adipisicing.</p>
                     <p className="text-slate-200" >Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                    <Link className="py-3 px-6 bg-green-600 text-white" >Lorem, ipsum dolor.</Link>
+                    <Link className="py-3 px-6 bg-green-600 text-white" >Voir les formations</Link>
                 </div>
             </section>
 
