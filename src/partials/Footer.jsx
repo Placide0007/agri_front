@@ -1,4 +1,3 @@
-import arrow_up from "../assets/arrow-up.svg"
 export default function Footer() {
     return (
         <>
