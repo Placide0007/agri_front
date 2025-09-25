@@ -9,7 +9,7 @@ export default function Header(){
                 <img src={logo} alt="logo" className="w-[130px] cursor-pointer grayscale-0 hover:grayscale-75 hover:-translate-y-1 duration-300" />
 
                 {/* lien de navigation  */}
-                <nav className="flex justify-between gap-10 items-center ">
+                <nav className="flex  justify-between gap-10 items-center ">
                     <NavLink className="p-3 font-semibold hover:bg-gray-200 rounded" to="/">Home</NavLink>
                     <NavLink className="p-3 font-semibold hover:bg-gray-200 rounded" to="/about">About</NavLink>
                     <NavLink className="p-3 font-semibold hover:bg-gray-200 rounded" to="/profile">Profile</NavLink>
