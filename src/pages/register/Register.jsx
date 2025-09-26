@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Register() {
     return (
         <>
-            <form className="w-[500px] md:shadow p-5 flex flex-col gap-3 bg-white rounded" action="" method="post">
+            <form className="w-[500px] md:shadow p-6 flex flex-col gap-3 bg-white rounded" action="" method="post">
                 <p className="text-center font-bold text-2xl text-slate-800 mb-4">Inscription</p>
                 {/* nom de l utilisateur */}
                 <div>
