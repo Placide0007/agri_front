@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/Microsoft-logo.svg";
+import { useAuth } from "../Context/Auth";
 
 export default function Header() {
+  const { User, logout } = useAuth();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen); 
+  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setSidebarOpen(false);
 
   return (
@@ -21,18 +23,30 @@ export default function Header() {
 
         {/* Nav links  pour les grand ecrans */}
         <nav className="hidden [&_a]:p-3 [&_a]:rounded [&_a]:hover:bg-gray-200 [&_a]:font-semibold md:flex gap-10 items-center">
-          <NavLink  to="/">Accueil</NavLink>
+          <NavLink to="/">Accueil</NavLink>
           {/* <a className="p-ont-semibold hover:bg-gray-200 rounded" href="#about">A propos</a> */}
-          <NavLink  to="/profile">Profile</NavLink>
-          <NavLink  to="/forum">Forum</NavLink>
-          <NavLink  to="/users-list">Administration</NavLink>
+          {
+            User && <NavLink to="/profile">Profile</NavLink>
+          }
+          <NavLink to="/forum">Forum</NavLink>
+          <NavLink to="/users-list">Administration</NavLink>
         </nav>
 
         {/* Boutons d'authentification   pour les grands ecrans */}
-        <div className="hidden md:flex items-center gap-4">
-          <NavLink className="border text-green-600 border-green-600 px-3 py-2 rounded-xs" to="/register">S'inscrire</NavLink>
-          <NavLink className="bg-green-600 border border-green-600 px-3 py-2 rounded-xs text-white" to="/login">Se connecter</NavLink>
-        </div>
+        {
+          !User && <>
+            <div className="hidden md:flex items-center gap-4">
+              <NavLink className="border text-green-600 border-green-600 px-3 py-2 rounded-xs" to="/register">S'inscrire</NavLink>
+              <NavLink className="bg-green-600 border border-green-600 px-3 py-2 rounded-xs text-white" to="/login">Se connecter</NavLink>
+            </div></>
+        }
+        {
+          User && <>
+            <div className="hidden md:flex items-center gap-4">
+              <NavLink onClick={logout} className="bg-red-500 border px-3 py-2 rounded-xs text-white" to="/login">Se Deconnecter</NavLink>
+            </div></>
+        }
+
 
         {/* Hamburger button - Mobile seulement */}
         <button onClick={toggleSidebar} className="md:hidden">
@@ -42,9 +56,8 @@ export default function Header() {
 
       {/* Sidebar - pour mobile */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         {/* Header dans le sidebar */}
         <div className="flex justify-between items-center px-4 py-3">
@@ -58,10 +71,20 @@ export default function Header() {
         <nav className="flex flex-col gap-2 px-4 py-4">
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/">Accueil</NavLink>
           {/* <a onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" href="#about">A propos</a> */}
+          {
+            User && <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/profile">Profile</NavLink>
+          }
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/profile">Profile</NavLink>
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/forum">Forum</NavLink>
-          <NavLink onClick={closeSidebar} className="border text-green-600 border-green-600 px-3 py-2 rounded text-center" to="/register">S'inscrire</NavLink>
-          <NavLink onClick={closeSidebar} className="bg-green-600 border border-green-600 px-3 py-2 rounded text-white text-center" to="/login">Se connecter</NavLink>
+          {
+            !User && <>
+              <NavLink onClick={closeSidebar} className="border text-green-600 border-green-600 px-3 py-2 rounded text-center" to="/register">S'inscrire</NavLink>
+              <NavLink onClick={closeSidebar} className="bg-green-600 border border-green-600 px-3 py-2 rounded text-white text-center" to="/login">Se connecter</NavLink>
+            </>
+          }
+          {
+            User && <NavLink onClick={logout} className="bg-red-500 border px-3 py-2 rounded-xs text-white" to="/login">Se Deconnecter</NavLink>
+          }
         </nav>
       </aside>
     </>
