@@ -7,6 +7,9 @@ import BareLayout from "./layouts/BareLayout"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import Forum from "./pages/forum/Forum"
+import AdminLayout from "./layouts/AdminLayout"
+import UsersList from "./pages/admin/users/UsersList"
+import CulturesList from "./pages/admin/cultures/CulturesList"
 
 function App() {
   
@@ -27,6 +30,12 @@ function App() {
           <Route element={<BareLayout/>}>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
+          </Route>
+
+          {/* routes pour les pages de l'administration */}
+          <Route element={<AdminLayout/>}>
+            <Route path="/users-list" element={<UsersList/>}/>
+            <Route path="/cultures-list" element={<CulturesList/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

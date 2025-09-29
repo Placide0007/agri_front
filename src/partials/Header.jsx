@@ -20,11 +20,12 @@ export default function Header() {
         />
 
         {/* Nav links  pour les grand ecrans */}
-        <nav className="hidden md:flex gap-10 items-center">
-          <NavLink className="p-3 font-semibold hover:bg-gray-200 rounded" to="/">Accueil</NavLink>
-          <a className="p-3 font-semibold hover:bg-gray-200 rounded" href="#about">A propos</a>
-          <NavLink className="p-3 font-semibold hover:bg-gray-200 rounded" to="/profile">Profile</NavLink>
-          <NavLink className="p-3 font-semibold hover:bg-gray-200 rounded" to="/forum">Forum</NavLink>
+        <nav className="hidden [&_a]:p-3 [&_a]:rounded [&_a]:hover:bg-gray-200 [&_a]:font-semibold md:flex gap-10 items-center">
+          <NavLink  to="/">Accueil</NavLink>
+          {/* <a className="p-ont-semibold hover:bg-gray-200 rounded" href="#about">A propos</a> */}
+          <NavLink  to="/profile">Profile</NavLink>
+          <NavLink  to="/forum">Forum</NavLink>
+          <NavLink  to="/users-list">Administration</NavLink>
         </nav>
 
         {/* Boutons d'authentification   pour les grands ecrans */}
@@ -56,7 +57,7 @@ export default function Header() {
         {/* Nav links - pour Mobile */}
         <nav className="flex flex-col gap-2 px-4 py-4">
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/">Accueil</NavLink>
-          <a onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" href="#about">A propos</a>
+          {/* <a onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" href="#about">A propos</a> */}
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/profile">Profile</NavLink>
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/forum">Forum</NavLink>
           <NavLink onClick={closeSidebar} className="border text-green-600 border-green-600 px-3 py-2 rounded text-center" to="/register">S'inscrire</NavLink>
