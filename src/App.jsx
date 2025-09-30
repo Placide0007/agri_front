@@ -12,30 +12,30 @@ import UsersList from "./pages/admin/users/UsersList"
 import CulturesList from "./pages/admin/cultures/CulturesList"
 
 function App() {
-  
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           {/* route pour les pages principales */}
-          <Route element={<MainLayout/>}>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/about" element={<About/>}/>
-            <Route path="/forum" element={<Forum/>}/>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/forum" element={<Forum />} />
           </Route>
 
 
           {/* routes pour les pages d'authentifications */}
-          <Route element={<BareLayout/>}>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>}/>
+          <Route element={<BareLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Route>
 
           {/* routes pour les pages de l'administration */}
-          <Route element={<AdminLayout/>}>
-            <Route path="/users-list" element={<UsersList/>}/>
-            <Route path="/cultures-list" element={<CulturesList/>}/>
+          <Route element={<AdminLayout />}>
+            <Route path="/users-list" element={<UsersList />} />
+            <Route path="/cultures-list" element={<CulturesList />} />
           </Route>
         </Routes>
       </BrowserRouter>
