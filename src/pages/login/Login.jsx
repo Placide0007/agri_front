@@ -7,6 +7,7 @@ export default function Login() {
 
     const navigate = useNavigate();
     const { login } = useAuth();
+
     const [error, setError] = useState("")
     const [user, setUser] = useState({
         email: "",
@@ -15,7 +16,8 @@ export default function Login() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const res = login(user.email, user.password)
+        const res = login(user.email, user.password
+                         
         return res.succes ? navigate("/") : setError(res.message)
     }
 
@@ -24,6 +26,7 @@ export default function Login() {
             <form onSubmit={onSubmit} className="w-[500px] md:shadow p-6 flex flex-col gap-3 bg-white rounded" action="" method="post">
                 <p className="text-center font-bold text-2xl text-slate-800 mb-4">Connexion</p>
                 {
+
                     error && error != "" && <p className="bg-red-200 text-center p-1 rounded">{error}</p>
                 }
                 
@@ -31,11 +34,21 @@ export default function Login() {
                 <div>
                     <label htmlFor="email">Adresse Email</label>
                     <input value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} className="p-3 outline-green-600 mt-2 bg-gray-200 w-full" type="email" name="email" id="email" />
+
+                    error && error!="" && <p className="bg-red-200 text-center p-1 rounded">{error}</p>
+                 } 
+                {/* email de l'utilisateur */}
+                <div>
+                    <label htmlFor="email">Adresse Email</label>
+                    <input value={user.email} onChange={(e)=>setUser({...user,email:e.target.value})} className="p-3 outline-green-600 mt-2 bg-gray-200 w-full" type="email" name="email" id="email"/>
+
                 </div>
                 {/* mot de passe de l'utilisateur */}
                 <div>
                     <label htmlFor="password">Mot de passe</label>
+
                     <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} className="p-3 mt-2 bg-gray-200 w-full" type="password" name="password" id="password" />
+                    <input value={user.password} onChange={(e)=>setUser({...user,password:e.target.value})} className="p-3 mt-2 bg-gray-200 w-full" type="password" name="password" id="password"/>
                 </div>
                 {/* bouton d authentification */}
                 <div>

@@ -38,7 +38,7 @@ export default function Header() {
             <div className="hidden md:flex items-center gap-4">
               <NavLink className="border text-green-600 border-green-600 px-3 py-2 rounded-xs" to="/register">S'inscrire</NavLink>
               <NavLink className="bg-green-600 border border-green-600 px-3 py-2 rounded-xs text-white" to="/login">Se connecter</NavLink>
-            </div></>
+            </div>
         }
         {
           User && <>
@@ -51,7 +51,7 @@ export default function Header() {
         <button onClick={toggleSidebar} className="md:hidden">
           <i className="text-slate-800 cursor-pointer text-2xl fas fa-bars"></i>
         </button>
-      </header>
+     
 
       {/* Sidebar - pour mobile */}
       <aside
@@ -68,7 +68,11 @@ export default function Header() {
 
         {/* Nav links - pour Mobile */}
         <nav className="flex flex-col gap-2 px-4 py-4">
+        
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/">Accueil</NavLink>
+
+          {/* <a onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" href="#about">A propos</a> */}
+
           {
             User && <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/profile">Profile</NavLink>
           }
