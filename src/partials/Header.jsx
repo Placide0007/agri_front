@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/Microsoft-logo.svg";
 import { useAuth } from "../Context/Auth";
 
+   
 export default function Header() {
   const { User, logout } = useAuth();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -24,7 +25,6 @@ export default function Header() {
         {/* Nav links  pour les grand ecrans */}
         <nav className="hidden [&_a]:p-3 [&_a]:rounded [&_a]:hover:bg-gray-200 [&_a]:font-semibold md:flex gap-10 items-center">
           <NavLink to="/">Accueil</NavLink>
-          {/* <a className="p-ont-semibold hover:bg-gray-200 rounded" href="#about">A propos</a> */}
           {
             User && <NavLink to="/profile">Profile</NavLink>
           }
@@ -38,7 +38,7 @@ export default function Header() {
             <div className="hidden md:flex items-center gap-4">
               <NavLink className="border text-green-600 border-green-600 px-3 py-2 rounded-xs" to="/register">S'inscrire</NavLink>
               <NavLink className="bg-green-600 border border-green-600 px-3 py-2 rounded-xs text-white" to="/login">Se connecter</NavLink>
-            </div></>
+            </div>
         }
         {
           User && <>
@@ -47,12 +47,11 @@ export default function Header() {
             </div></>
         }
 
-
         {/* Hamburger button - Mobile seulement */}
         <button onClick={toggleSidebar} className="md:hidden">
           <i className="text-slate-800 cursor-pointer text-2xl fas fa-bars"></i>
         </button>
-      </header>
+     
 
       {/* Sidebar - pour mobile */}
       <aside
@@ -69,8 +68,11 @@ export default function Header() {
 
         {/* Nav links - pour Mobile */}
         <nav className="flex flex-col gap-2 px-4 py-4">
+        
           <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/">Accueil</NavLink>
+
           {/* <a onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" href="#about">A propos</a> */}
+
           {
             User && <NavLink onClick={closeSidebar} className="p-2 font-semibold hover:bg-gray-100 rounded" to="/profile">Profile</NavLink>
           }
