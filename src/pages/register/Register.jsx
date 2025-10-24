@@ -1,67 +1,70 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useAuth ,inscrire} from "../../Context/Auth";
+import { useAuth } from "../../Context/Auth";
+import { useForm } from 'react-hook-form'
 
 export default function Register() {
 
+    //ceci utilise react-hook-form
+    const { register, handleSubmit, formState: { errors } } = useForm({mode: "onChange"})
+    const { inscrire } = useAuth()
     const navigate = useNavigate()
-    const [error, setError] = useState("")
-    const [user, setUser] = useState({
-        nom: "",
-        prenoms: '',
-        email: '',
-        pwd: '',
-        pwd2: ''
-    })
-    
+    const [error, setError] = useState('')
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        if (user.pwd === user.pwd2) {
+    const onSubmit = (data) => {
+        setError("")
+        if (data.password === data.confirmPassword) {
             const res = inscrire({
-                nom: user.nom + user.prenoms,
-                email: user.email,
-                password: user.pwd
+                nom: `${data.firstname} ${data.lastname}` ,
+                email: data.email,
+                password: data.password
             })
             return res.succes ? navigate("/login") : setError(res.message)
         }
         setError('Mot de passe ne correspondent pas')
-        return ;
+        return;
     }
 
 
     return (
         <>
-            <form onSubmit={onSubmit} className="w-[500px] md:shadow p-6 flex flex-col gap-3 bg-white rounded" action="" method="post">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-[500px] md:shadow p-6 flex flex-col gap-3 bg-white rounded" action="" method="post">
                 <p className="text-center font-bold text-2xl text-slate-800 mb-4">Inscription</p>
                 {
-                    error && <p className="bg-red-200 text-center p-1 rounded">{error}</p>
+                    error !== "" && <p className="bg-red-200 text-center p-1 rounded">{error}</p>
                 }
+
                 {/* nom de l utilisateur */}
                 <div>
                     <label htmlFor="first_name">Nom</label>
-                    <input value={user.nom} onChange={(e) => setUser({ ...user, nom: e.target.value })} className="p-3 mt-2 bg-gray-200 w-full" type="text" name="first_name" id="irst_name" />
+                    <input {...register('firstname', {
+                        required: true
+                    })} className="p-3 mt-2 bg-gray-200 w-full" type="text" />
                 </div>
+
                 {/* prenom de l utilisateur  */}
                 <div>
-                    <label htmlFor="last_name">Prenom(s)</label>
-                    <input value={user.prenoms} onChange={(e) => setUser({ ...user, prenoms: e.target.value })} className="p-3 mt-2 bg-gray-200 w-full" type="text" name="last_name" id="last_name" />
+                    <label htmlFor="lastname">Prenom(s)</label>
+                    <input {...register('lastname')} className="p-3 mt-2 bg-gray-200 w-full" type="text" />
                 </div>
                 {/* email de l utilisateur */}
                 <div>
                     <label htmlFor="email">Adresse email</label>
-                    <input value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} className="p-3 mt-2 bg-gray-200 w-full" type="email" name="email" id="email" />
+                    <input {...register('email', { required: true, message: "le champ email est obligatoire" })} className="p-3 mt-2 bg-gray-200 w-full" type="email" />
+                    {errors.email && (
+                        <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                    )}
                 </div>
                 {/* mot de passe de l'utilisateur */}
                 <div>
-                    <label htmlFor="email">Mot de passe</label>
-                    <input value={user.pwd} onChange={(e) => setUser({ ...user, pwd: e.target.value })} className="p-3 mt-2 bg-gray-200 w-full" type="password" name="password" id="password" />
+                    <label htmlFor="password">Mot de passe</label>
+                    <input {...register('password', { required: true })} className="p-3 mt-2 bg-gray-200 w-full" type="password" />
                 </div>
                 {/*Confirmation mot de passe de l'utilisateur */}
                 <div>
-                    <label htmlFor="password2">Confirmer Mot de passe</label>
-                    <input value={user.pwd2} onChange={(e) => setUser({ ...user, pwd2: e.target.value })} className="p-3 mt-2 bg-gray-200 w-full" type="password" name="password2" id="password2" />
+                    <label htmlFor="confirmPassword">Confirmer Mot de passe</label>
+                    <input {...register("confirmPassword", { required: true })} className="p-3 mt-2 bg-gray-200 w-full" type="password" />
                 </div>
                 {/* bouton s'inscrire */}
                 <div>
