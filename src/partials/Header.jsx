@@ -24,12 +24,15 @@ export default function Header() {
         {/* Nav links  pour les grand ecrans */}
         <nav className="hidden [&_a]:p-3 [&_a]:rounded [&_a]:hover:bg-gray-200 [&_a]:font-semibold md:flex gap-10 items-center">
           <NavLink to="/">Accueil</NavLink>
+          <NavLink to="/forum">Forum</NavLink>
           {/* <a className="p-ont-semibold hover:bg-gray-200 rounded" href="#about">A propos</a> */}
           {
-            User && <NavLink to="/profile">Profile</NavLink>
+            User &&
+            <><NavLink to="/profile">Profile</NavLink>
+              <NavLink to="/users-list">Administration</NavLink></>
           }
-          <NavLink to="/forum">Forum</NavLink>
-          <NavLink to="/users-list">Administration</NavLink>
+          
+
         </nav>
 
         {/* Boutons d'authentification   pour les grands ecrans */}
